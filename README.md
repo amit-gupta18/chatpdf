@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PDF Chat RAG Application
 
-## Getting Started
+A Next.js 13+ app for chatting with your PDFs using Retrieval-Augmented Generation (RAG). Upload PDFs, store them as vector embeddings in Pinecone, and ask questions powered by OpenAI’s Gemini model. Built with TailwindCSS and Shadcn UI for a clean, responsive interface.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- **User Authentication:** Secure endpoints with Clerk.
+- **PDF Upload:** Drag & drop or select PDFs.
+- **Vector Storage:** PDF text is chunked, embedded via OpenAI `text-embedding-004`, and stored in Pinecone.
+- **RAG Q&A:** Ask questions about your PDFs; relevant chunks are retrieved from Pinecone and answered using OpenAI Gemini (`gemini-1.5-flash`).
+- **Modern UI:** TailwindCSS + Shadcn components with smooth animations.
+- **Multi-user Support:** Pinecone filters by user ID for privacy.
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js 13+, React, TailwindCSS, Shadcn UI
+- **Backend:** Next.js API Routes
+- **Vector DB:** Pinecone
+- **Embeddings & LLM:** OpenAI (Gemini-compatible)
+- **Authentication:** Clerk
+
+---
+
+## Project Structure
+
+```
+/app
+    /chat           # Authorised Frontend endpoint
+    /api
+        /query      # Chat API
+        /upload     # PDF upload API
+/components
+    /ui             # Chat UI components
+    /FileUpload     # PDF upload card
+/lib
+    openai.ts       # OpenAI API helper
+/public
+/styles
+    globals.css     # Tailwind import
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the repository:**
+     ```bash
+     git clone https://github.com/amit-gupta18/chatpdf.git
+     cd chatpdf
+     ```
 
-## Learn More
+2. **Install dependencies:**
+     ```bash
+     npm install
+     ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Set up environment variables (`.env.local`):**
+     ```env
+     OPENAI_API_KEY=<your_openai_key>
+     PINECONE_API_KEY=<your_pinecone_key>
+     CLERK_API_KEY=<your_clerk_key>
+     ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the development server:**
+     ```bash
+     npm run dev
+     ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Open in browser:**
+     ```
+     http://localhost:3000
+     ```

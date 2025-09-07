@@ -32,7 +32,7 @@ function chunkText(text: string, chunkSize = 800) {
 
 export async function POST(request: Request): Promise<Response> {
     try {
-        // Authenticate user
+  
         const { userId } = await auth();
         if (!userId) {
             return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), {
@@ -75,7 +75,7 @@ export async function POST(request: Request): Promise<Response> {
             input: chunks,
         });
 
-        // console.log("Embedding response : ", embeddingResponse);
+
 
         const vectors = embeddingResponse.data.map((item, i) => ({
             id: `${docId}-${i}`,
@@ -91,7 +91,7 @@ export async function POST(request: Request): Promise<Response> {
         console.log(`Stored ${vectors.length} vectors for ${file.name}`);
 
 
-        // Respond with metadata and base64 (example respond with contents)
+
         return new Response(JSON.stringify({
             ok: true,
             userId,

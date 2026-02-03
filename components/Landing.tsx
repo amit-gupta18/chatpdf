@@ -135,7 +135,7 @@ export default function LandingPage() {
               </div>
               <h3 className="text-xl font-semibold mb-2">3. Get Answers</h3>
               <p className="text-muted-foreground">
-                Receive instant, accurate answers based on your document's content
+                Receive instant, accurate answers based on your document&apos;s content
               </p>
             </div>
           </div>
@@ -158,8 +158,8 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "ChatPDF AI has revolutionized how I work with research papers. I can quickly find specific
-                  information without reading entire documents."
+                  &quot;ChatPDF AI has revolutionized how I work with research papers. I can quickly find specific
+                  information without reading entire documents.&quot;
                 </p>
                 <div className="flex items-center">
                   <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
@@ -180,8 +180,8 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "As a lawyer, I deal with hundreds of legal documents. This tool helps me extract key information in
-                  seconds."
+                  &quot;As a lawyer, I deal with hundreds of legal documents. This tool helps me extract key information in
+                  seconds.&quot;
                 </p>
                 <div className="flex items-center">
                   <div className="h-10 w-10 bg-secondary/10 rounded-full flex items-center justify-center mr-3">
@@ -202,8 +202,8 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4">
-                  "Perfect for students! I can ask questions about textbooks and get instant explanations. It's like
-                  having a tutor available 24/7."
+                  &quot;Perfect for students! I can ask questions about textbooks and get instant explanations. It&apos;s like
+                  having a tutor available 24/7.&quot;
                 </p>
                 <div className="flex items-center">
                   <div className="h-10 w-10 bg-accent/10 rounded-full flex items-center justify-center mr-3">

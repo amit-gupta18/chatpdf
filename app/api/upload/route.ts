@@ -1,5 +1,5 @@
 import { auth } from '@clerk/nextjs/server';
-// @ts-ignore
+// @ts-expect-error - pdf-parse types are not compatible with ES modules
 import pdf from 'pdf-parse/lib/pdf-parse.js';
 import { openai } from '@/lib/openai';
 import { Pinecone } from '@pinecone-database/pinecone';
@@ -52,7 +52,6 @@ export async function POST(request: Request): Promise<Response> {
         }
 
         const arrayBuffer = await file.arrayBuffer();
-        const b64 = Buffer.from(arrayBuffer).toString('base64');
         const docId = crypto.randomUUID();
 
 
@@ -102,8 +101,8 @@ export async function POST(request: Request): Promise<Response> {
             status: 200,
             headers: { "Content-Type": "application/json" }
         });
-    } catch (err: any) {
-        const message = err?.message || 'Unknown error handling file upload';
+    } catch (err: unknown) {
+        const message = (err as Error)?.message || 'Unknown error handling file upload';
         return new Response(JSON.stringify({ ok: false, error: message }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }

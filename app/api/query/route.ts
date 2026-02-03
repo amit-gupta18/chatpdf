@@ -87,10 +87,10 @@ ${context}`;
                 headers: { "Content-Type": "application/json" },
             }
         );
-    } catch (err: any) {
+    } catch (err: unknown) {
         console.error("Query error:", err);
         return new Response(
-            JSON.stringify({ ok: false, error: err?.message || "Unknown error" }),
+            JSON.stringify({ ok: false, error: (err as Error)?.message || "Unknown error" }),
             {
                 status: 500,
                 headers: { "Content-Type": "application/json" },

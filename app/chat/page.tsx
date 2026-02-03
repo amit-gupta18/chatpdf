@@ -35,8 +35,9 @@ export default function QuickUpload() {
       console.log("Upload response:", res.data)
       setUploadedFile(file.name)
       setStatus(`✓ Successfully uploaded "${file.name}" (${res.data.chunks || 0} chunks stored)`)
-    } catch (err: any) {
-      setUploadError("Upload failed: " + (err?.response?.data?.error || err?.message || String(err)))
+    } catch (err: unknown) {
+      const axiosError = err as { response?: { data?: { error?: string } }; message?: string }
+      setUploadError("Upload failed: " + (axiosError?.response?.data?.error || axiosError?.message || String(err)))
     } finally {
       setIsUploading(false)
     }
@@ -67,8 +68,8 @@ export default function QuickUpload() {
       }
 
       setStatus(data.answer)
-    } catch (err: any) {
-      setStatus(`Error: ${err.message}`)
+    } catch (err: unknown) {
+      setStatus(`Error: ${(err as Error).message}`)
     }
   }
 
@@ -80,7 +81,7 @@ export default function QuickUpload() {
             onFileSelect={handleFileSelect}
             isDragOver={isDragOver}
             setIsDragOver={setIsDragOver}
-            // @ts-ignore
+            // @ts-expect-error - FileUpload component prop types need to be updated
             fileInputRef={fileInputRef}
             error={uploadError}
           />
